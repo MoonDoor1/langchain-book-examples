@@ -1,0 +1,38 @@
+﻿To test different versions of your pipeline and determine the best approach, you can follow these steps:
+
+
+1. Define Variations: Identify the different variations of your pipeline that you want to test. This could include different vector database structures, different types of questions, different methods of extracting information from the documents, etc.
+
+
+2. Create Test Scenarios: For each variation, define a set of test scenarios. These scenarios should be representative of the real-world situations that your LLM system will encounter. For example, you might create test scenarios based on different types of quarterly earnings reports, different types of queries, etc.
+
+
+3. Run Tests: For each variation and each test scenario, run your pipeline and record the results. This could include the accuracy of the responses, the speed of the pipeline, the size of the database, etc.
+
+
+4. Evaluate Results: Compare the results of the different variations to determine which one performs best. This could involve statistical analysis, visualizations, or other methods of comparing the results.
+
+
+5. Iterate: Based on the results of your tests, make adjustments to your pipeline and repeat the testing process. This iterative process can help you continuously improve your LLM system.
+
+
+6 Automated Testing: Consider setting up automated testing for your LLM system. This could involve writing a script that runs your tests automatically at regular intervals, or whenever changes are made to the system. Automated testing can help catch issues early, before they affect the end users of your system.
+
+
+In terms of whether to use questions when extracting info from the documents, this depends on the specifics of your LLM system and the nature of the documents and queries. Using questions can help guide the extraction process and ensure that the information extracted is relevant to the queries. However, it may also limit the range of information that is extracted. Embedding and chunking the documents without using questions can capture a wider range of information, but it may also include irrelevant information and make the extraction process less efficient.
+
+
+To determine the best approach, you could run tests with and without questions and compare the results. This could help you understand the trade-offs between these two approaches and choose the one that best meets your needs.
+
+
+
+
+The different types of variations I want to test
+
+1. No question loop. This will just take the documents embed them then run testing baseline
+2. My questions, This will run the question loop. Take the answers embed them run testing
+3. Computer generated questions. Generate computer questions based on llama question generations. Embed answers run baseline tests
+4. Few shot learning templates vs Zero Shot learning templates
+5. TBD, Other models, Other functions. Let's wait for tomorrow's call with Allie then re-look at the testing scenarios. 
+6. Testing what ever the fuck this is Recursive retrever + agents
+7. This is interesting. Link llama index + search engine for LLMs

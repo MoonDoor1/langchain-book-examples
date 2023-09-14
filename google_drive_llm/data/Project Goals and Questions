@@ -1,0 +1,55 @@
+﻿Goals for the LLM Tool
+
+
+1. IRR, Net IRR, and MIOC: The tool aims to accurately extract and present key financial metrics like Internal Rate of Return (IRR), Net IRR after fees, and Multiple on Invested Capital (MIOC) from investor quarterly memos.
+2. Capital Distribution vs. Capital Calls: For Limited Partners (LPs) who are already invested, the tool will provide information about the amount of capital being distributed versus the capital being called. Special scenarios like recallable distributions will also be considered.
+3. Commitment Pacing: The tool will aim to gauge how quickly the called capital is being invested. Advanced algorithms like Monte Carlo simulations may be used to understand commitment pacing more accurately.
+4. Investment Strategy & 12-Month Roadmap: Another goal is to highlight the key strategies that the fund plans to employ in the next 12 months. This includes the types of investments they're targeting and the expected returns on those investments.
+
+Thoughts on these goals? Are these all possible with just the memos or will we need to extract data from other documents? 
+
+
+Questions
+
+A. When it comes to public forms, What specific data do you recommend we look for in 13-f filings?
+
+
+B. You mentioned sometimes companies will provide unaudited Financial statements for companies they have invested in.  
+
+
+Do you see value in incorporating data from unaudited financial statements of the companies the fund has invested in? If so, what specific metrics or data points would be most beneficial?
+
+C. If we get access to a funds data room, Would we want to do data analysis on it? What key documents or data points should our tool aim to extract from the investor data room?
+
+D. Could you provide insights on the important indicators for assessing the timing of a fund's closing? How does this relate to the fund's operational efficiency and fee structure? 
+
+
+
+
+Creating and Understanding the tools Pipeline
+
+
+Steps for the tool:
+
+
+1. User uploads a document from a fund. 
+2. The agent scans the document Creates a condensed summary for the important financial data. This will include things like IRR, Net IRR, MOC, MIOC, Successful trades made by the fund and Large losses made by the fund. It can export this data into a CSV file. 
+3. If you are a LP and the data is in the memo it will then summarize your Capital Distribution vs. Capital Calls: For Limited Partners (LPs) who are already invested, the tool will provide information about the amount of capital being distributed versus the capital being called. Special scenarios like recallable distributions will also be considered.
+4. Commitment Pacing: Not sure how to do this. Will need to circle back to this one
+5. Funds 12 month road map. The tool will highlight the key strategies that the fund plans to employ in the next 12 months. This includes the types of investments they're targeting and the expected returns on those investments.
+Pseudo code for tool:
+1. Load the data from the document. 
+2. Pre process the text in any way needed
+3. Create nodes with metadata from the text
+   1. This involves choosing a chunk size and creating embeddings
+4. Have an agent look for all mentions of financial data in regards to our search. 
+   1. Create a summary of the financial data. Export to a csv file.
+5. Have an Agent scan for any mention of capital distribution of the fund
+   1. Create a summary of the capital distribution vs capital calls. 
+6. Have an agent Scan the document for a 12 month road map of upcoming investments 
+   1. Create a summary of the capital distribution of upcoming investments and expected return on those investments.
+
+
+Git hubs to look at
+1. Summary.wft github Chunking best practices
+2. Train and fine tune models easily

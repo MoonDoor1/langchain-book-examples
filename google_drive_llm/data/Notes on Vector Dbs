@@ -1,0 +1,58 @@
+﻿You can group indexes into different data structures. Notes taken from here
+
+
+Visual representation of each structure 
+  
+
+
+
+Hash Based - 
+This transforms higher dimensional data into lower dimensional data using hashing. Burring indexing the dataset is hashed multiple times to ensure that similar points are more likely to collide. This is the opposite of what usually happens with hashing algorithms (They try to avoid collisions.)
+
+
+They are very fast while scaling to huge amounts of data but the downside is they are not very accurate 
+
+
+Tree Based - 
+        Tree based index structures allow for rapid searches in high-dimensional spaces. The tree is constructed so similar data points end up in the subtrees. Spotify developed ANNOY (Approximate Nearest Neighbours Oh Yeah) uses a forrest of binary search trees. 
+
+
+The downside for tree bases indexes is they perform well only on low dimensional data. They can not capture high dimensional data with  accuracy 
+
+
+Graph Based - 
+        Graph based indexes are based on data points in vector spaces from a graph, where the nodes represent the data values and the edges connecting the nodes represent the similarity between the data points. The graph is constructed in a way the similar data points are more likely to be connected by edges and the ANN search algo is designed to traverse the graph in an efficient manner.
+
+
+Inverted File - 
+
+
+Inverted file index divides the vector space into a number of tessellated cells, Called Voronio diagrams - These reduce the search space similar to clustering. In order to find the NN it must locate the centroid of the nearest Voronoi Cell.
+
+
+
+
+Compression Steps - To improve search accuracy in the retrieval a process called quantization is utilized. Where the underlying vectors in the index are broken into chunks made up of fewer bytes.
+
+
+
+
+Common Types of indexes - 
+
+
+PQ - Performs both compression and data reduction. The idea is to decompose a larger dimensional vector space into a cartesian product of smaller dimensional subspaces by quantizing each subspace into its own cluster
+
+
+Flat - Stores vectors in unmodified form. Used for exact kNN search on every vector. The most accurate but the slowest. This doesn't use compression
+
+
+IVF-Flat - Inverted file indexes rapidly narrow down the search space. This is much faster than brute force search, but they sacrifice some accuracy in the form of recall. 
+
+
+IVF-PQ - Uses IVF combo with Product Quantization to compress the vectors. Reducing the memory footprint and speeding up the search, whole being better in recall than a pure PQ index.
+
+
+HNSW - The most popular index, and is often combined with PQ, in the form of HNSW-PQ to improve search speed and memory compared to IVF-PQ.
+
+
+Vamana - New index, design for on disk performance storing larger than memory vector data while performing as fast as HNSW - Still in early stages many DB havent implemented this yet.

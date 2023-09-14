@@ -1,0 +1,99 @@
+﻿🎮 Updated LLM Adventure Saga: Quest for the Ultimate Investment Tool with Timelines 🎮
+🌍 World 1: The Realm of Data Gathering
+⏳ Timeframe: 1 Day
+* Level 1: "The InfoScout" - https://13f.info/ - site that formats 13-f filings open source
+   * Goal: Collect data from emails from Allie or find sample data for this task .
+* Level 2: "SEC Explorer"
+   * Goal: Download 10 sample 13-f filings from the SEC website.
+* Level 3: "The Data Vault"
+   * Goal: Set up a basic SQL database (you can use Docker for this).
+   * Install software 
+   * Init db 
+   * Design db 
+   * Test db 
+   * Documentation 
+   * Backup 
+
+
+        I'm not going to do the database for now on because of this reason: 
+
+“how can you reduce complexity? The less unknowns are in your stack, the easier it’ll be for you to maintain things and react to incidents.
+Databases are critical services. They take effort to operate, and even more effort to do so reliably. If you really need your data to stick around and be safe no matter what, you don’t want unnecessary risks.”
+
+
+
+
+        We are skipping the database section so now we just need to init the github env
+
+Completed when:
+* Have 13-f filings - DONE
+* Have Quarterly memo pdfs - DONE
+* Have Git hub env set up - DONE
+
+        
+🌍 World 2: The Preprocessing Kingdom
+⏳ Timeframe: 3 Days
+* Level 0: “Pine line definition”
+   * Define what you want your pipeline to do and look like. Whether this is a chatbot or a summarizer or a QA over a corpus of documents. 
+
+
+* Level 1: "Text Normalizer"
+   * Goal: Write a script to normalize your sample text data
+   * Identify Missing Values: Determine if there are any missing values in the dataset for metrics like IRR, Net IRR, etc.
+   * Strategy Decision: 
+So basically since we want to have a tool that extracts multiple things from the document we should essentially have some time as a summarizer or query engine that looks for each goal and returns the results. 
+* Level 2: "The Imputer"
+   * Goal: Handle missing values in your sample dataset.
+* Level 3: "The Tokenizer"
+   * Goal: Tokenize your sample text data.
+
+
+   * Choose a vector DB - below will depend on what DB you choose and what algo you want to use
+      * Tokenization Method: Choose a method for tokenizing text into individual words or phrases. You can use basic methods like Python's .split() method or more advanced methods like the Natural Language Toolkit (NLTK).
+      * N-grams: Optionally, consider using n-grams to capture context in your tokens.
+      *    * Vectorization: At this point, you might want to convert your tokens into numerical vectors using techniques like TF-IDF (Term Frequency-Inverse Document Frequency) or Word2Vec. Upload to Vector Db of your choosing
+* Level 4: "Vector Wizard"
+   * Goal: Convert text into numerical vectors using your chosen technique.
+* Checkpoint: Push current project state to GitHub.
+🌍 World 3: Ground Truth Mountain
+⏳ Timeframe: 2 Days
+* Level 1: "Labeler of Truth"
+   * Goal: Manually label a small subset of your sample data.
+   * Subset Selection: Choose a manageable subset of your data. The idea is to pick a small but diverse set of samples that represent various scenarios.
+   * Labeling Tool: Use a simple tool (Excel, a Python script with a UI, or even paper) to label the data.
+   * Metrics: Label the metrics that are relevant to your model like IRR, Net IRR, or particular investment strategies.
+   * Annotation Guidelines: Create a small guideline for how to label the data. This will be useful for you and anyone else who might contribute to the labeling process.
+   * Quality Check: Review the labels to ensure consistency and accuracy.
+   * Save Labels: Store these labels in a structured format like CSV or directly in your database.
+
+
+
+
+* Level 2: "The Splitter"
+   * Goal: Split your dataset into training, validation, and test sets.
+   * Partitioning: Use commonly accepted ratios for splitting the data. A common split ratio might be 70% for training, 15% for validation, and 15% for testing.
+   * Stratified Sampling: If your data classes are imbalanced, consider using stratified sampling to maintain the class distribution across all sets.
+   * Random Splitting: Make sure to randomize the data before splitting. Many machine learning libraries offer this functionality.
+   * Data Integrity: Ensure that each subset does not leak information to another (i.e., a single data point should belong to only one set: either training, validation, or testing).
+   * Save Sets: Store these subsets in a way that they can be easily loaded for model training and evaluation, perhaps in a database table or as separate CSV files.
+
+
+* Checkpoint: Push current project state to GitHub.
+🌍 World 4: The Model Experimentation Arena
+⏳ Timeframe: 2 Weeks
+* Level 1: "Novice Modeler"
+   * Goal: Implement simpler models for initial testing.
+* Level 2: "Pythonic Sage"
+   * Goal: Have your Python environment fully set up.
+* Level 3: "Tuner of Parameters"
+   * Goal: Run hyperparameter tuning on your initial models.
+* Level 4: "Validator Supreme"
+   * Goal: Implement k-Fold cross-validation.
+* Level 5: "Metric Master"
+   * Goal: Evaluate your model using chosen metrics.
+* Level 6: "Advanced Model Maestro"
+   * Goal: Experiment with more advanced models, if needed.
+* Final Boss: "The Decider"
+   * Goal: Select the best-performing model based on your evaluation metrics.
+* Checkpoint: Push current project state to GitHub. Celebrate the completion of your MVP!
+   *

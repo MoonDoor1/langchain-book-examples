@@ -1,0 +1,71 @@
+﻿* Use LangChain's pipelines like the Question Answering Pipeline to streamline this iterative process. It can retrieve documents, ask questions, evaluate responses, and generate new questions in a loop.
+
+
+* Use a model like Anthropic's Claude or LangChain's QuestionGenerator to dynamically generate questions tailored to each document. These can take into account the existing Q&A pairs and generate follow up questions.
+
+
+* Use a summarization model like Anthropic's Constitutional AI or LangChain's Summarize to get summaries of documents with poor existing Q&A pairs. Generate new questions against these summaries.
+
+
+* Employ an iterative workflow that evaluates existing Q&A pairs to determine quality, then generates new questions on documents/sections with low quality responses.
+
+
+* For batch processing, split the corpus into subsets and run the iterative QA workflow on each subset. Merge the Q&A pairs from each batch.
+
+
+* Use LangChain's LLM utilities like LLM Scorer to automatically evaluate the quality of existing Q&A pairs and determine when new questions are needed.
+
+
+* Store evidence passages for each Q&A pair to enable manual review/validation as needed.
+
+
+Ranking in order of difficulty 
+1. Use a summarization model like Constitutional AI to summarize documents
+2. Store evidence passages for each Q&A pair
+3. Use a question generator like Claude to dynamically generate questions
+4. Use a passage retriever like Stella to identify relevant sections
+5. Write simple information extraction scripts for structured data
+6. Use an iterative workflow with pipelines to evaluate and generate questions
+
+
+My current thoughts on the project. Basically we have hit a wall where we have the ability to loop questions over a corpus of documents. The problem we are running into is the bottleneck is the questions we ask the documents. Sometimes they have context but don't return answers because of how the question is structured. 
+
+
+What I would like to do is find a way to improve this Q&A review process using LLM tools. Since this is a basic function of LLMs. (Reading over text and running sentiment analysis ). 
+
+So looking at the Langchain docs / tutorials I have found an agent that can do exactly this (query an SQL db ) along with doing retrieval over documents. 
+
+
+Also would like to get some more experience setting up some type of Eval system where we can score the answers and outputs vs a baseline to really get a sense of what models and architecture  is the best for this product.  
+
+
+Also creating just a simple prompt template to summarize each document or get the bullet points on what areas are important could be a useful task. This would be creating a prompt template such as the one this guy does in this video. 
+
+
+
+
+So to summarize here is the order of things I would like to try working on next. 
+
+
+1. Debug the current project and find out why the chat bot isn't returning any of our data. 
+   1. Looks like normally embedding the data and upserting to pinecone works fine. Potentially the issue is due to how the vectors are set up. It was due to the way the vectors were set up. The vectors needed the metadata to contain a text and source field 
+2. Do research on nltpk entity extraction and what is actually happening in the magic box of embeddings and what not. Currently we are using this as the base of our project. 
+   1. Looks like this uses Llama index. Basically a langchain type framework  that may have better tools for the question part of our project.
+3. Look for simple ways to find some sort of eval baseline. As outlined in the beginning section of this document
+4. Try this out - Llama index stuff
+5. Try out summaries of the documents like this guys video vs baseline
+6. Create an agent that does this process using these docs doing retrieval over documents. 
+
+
+
+
+
+
+
+
+New to do list. 
+
+
+
+
+1.
